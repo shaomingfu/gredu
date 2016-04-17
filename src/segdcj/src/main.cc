@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cstdio>
+
+#include "trier.h"
+
+using namespace std;
+
+int main(int argc, const char ** argv)
+{
+	if(argc != 4)
+	{
+		cout<<"usage: "<<argv[0]<<" <genome1> <genome2> <ILP-TIME-LIMIT>"<<endl;
+		return 0;
+	}
+
+	srand(time(0));
+
+	trier tr( atof(argv[3]) );
+	tr.solve(argv[1], argv[2]);
+
+	return 0;
+}
