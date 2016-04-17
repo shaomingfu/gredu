@@ -1,6 +1,0 @@
-GREDU (Genome REarrangements with DUplications) is a software package
-implemented several exact algorithms to compute the edit distances under
-various evolutionaly models for two genomes with duplicate genes.
-
-Reference manual can be found at doc/manual.pdf. For any further
-information please contact Mingfu Shao (shaomingfu@gmail.com).
