@@ -74,7 +74,9 @@ int distoptimizer::solve()
 	int n = sx.size() * 4;
 	vector<int> v(n);
 	int c = connected_components(bg, &v[0]);
+	printf("simplified cycles = %d\n", simplified_cycles);
 	printf("\ntotoal %5d adjacencies, total %10d cycles, DCJ distance = %5d\n", n / 4, c, n / 4 - c);
+	//print_breakpoint_graph();
 
 	return 0;
 }
@@ -204,6 +206,14 @@ int distoptimizer::add_extremity_pair(int x, int y)
 	// build the final breakpoint graph
 	pair<edge_descriptor, bool> p = edge(x, y, bg);
 	if(p.second == false) add_edge(x, y, bg);
+
+	int x1 = (x % 2 == 0) ? (x - 1) : (x + 1);
+	int y1 = (y % 2 == 0) ? (y - 1) : (y + 1);
+	if(x1 >= 0 && x1 < sx.size() * 2 && y1 >= sx.size() * 2 && y1 < sx.size() * 2 + sy.size() * 2)
+	{
+		p = edge(x1, y1, bg);
+		if(p.second == false) add_edge(x1, y1, bg);
+	}
 
 	gene * gx;
 	gene * gy;
@@ -563,3 +573,23 @@ int distoptimizer::check_components()
 	return 0;
 }
 
+int distoptimizer::print_breakpoint_graph()
+{
+	for(int i = 0; i < sx.size() * 2; i++)
+	{
+		int a = 0, b = 0;
+		out_edge_iterator it1, it2;
+		for(tie(it1, it2) = out_edges(i, bg); it1 != it2; it1++)
+		{
+			int x = target(*it1, bg);
+			if(x < sx.size() * 2) a++;
+			else
+			{
+				b++;
+				printf("edge %2d <-> %2d\n", i, x - sx.size() * 2);
+			}
+		}
+		assert(a == 1 && b == 1);
+	}
+	return 0;
+}

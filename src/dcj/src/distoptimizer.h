@@ -58,6 +58,8 @@ public:
 	int build_mapping(const set<PI> & pairs);
 	int add_gene_pair(gene * gx, gene * gy);
 	int add_extremity_pair(int x, int y);
+
+	int print_breakpoint_graph();
 };
 
 #endif
