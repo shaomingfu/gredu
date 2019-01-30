@@ -76,11 +76,11 @@ public:
 	int print();
 };
 
-class exchange: public operation
+class exchange1: public operation
 {
 public:
-	exchange();
-	exchange(PG _pos1, PG _ops2);
+	exchange1();
+	exchange1(PG _pos1, PG _ops2);
 
 public:
 	PG pos1;

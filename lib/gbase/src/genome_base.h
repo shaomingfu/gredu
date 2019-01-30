@@ -40,7 +40,7 @@ public:
 	int do_iduplication(operation * op);
 	int do_loss(operation * op);
 	int do_circularization(operation * op);
-	int do_exchange(operation * op);
+	int do_exchange1(operation * op);
 	int do_dcj(operation * op);
 	int do_reversion(operation * op);
 	int do_linearization(operation * op);

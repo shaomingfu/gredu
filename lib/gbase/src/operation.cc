@@ -77,20 +77,20 @@ int linearization::print()
 	return 0;
 }
 
-exchange::exchange()
+exchange1::exchange1()
 	: operation(EXCHANGE)
 {
 	pos1.first = pos1.second = NULL;
 	pos2.first = pos2.second = NULL;
 }
 
-exchange::exchange(PG _pos1, PG _pos2)
+exchange1::exchange1(PG _pos1, PG _pos2)
 	:operation(EXCHANGE), pos1(_pos1), pos2(_pos2)
 {}
 
-int exchange::print()
+int exchange1::print()
 {
-	printf("exchange: (%d, %d) + (%d, %d)\n", pos1.first->x, pos1.second->x, pos2.first->x, pos2.second->x);
+	printf("exchange1: (%d, %d) + (%d, %d)\n", pos1.first->x, pos1.second->x, pos2.first->x, pos2.second->x);
 	return 0;
 }
 

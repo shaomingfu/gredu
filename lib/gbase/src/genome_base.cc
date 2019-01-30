@@ -99,7 +99,7 @@ int genome_base::operate(operation * op)
 	else if(op->type == IDUPLICATION) do_iduplication(op);
 	else if(op->type == LOSS) do_loss(op);
 	else if(op->type == CIRCULARIZATION) do_circularization(op);
-	else if(op->type == EXCHANGE) do_exchange(op);
+	else if(op->type == EXCHANGE) do_exchange1(op);
 	else if(op->type == DCJ) do_dcj(op);
 	else if(op->type == REVERSION) do_reversion(op);
 	else if(op->type == LINEARIZATION) do_linearization(op);
@@ -274,10 +274,10 @@ int genome_base::add_circular_chrm(const vector<int> & s, const vector<string> &
 	return 0;
 }
 
-int genome_base::do_exchange(operation * op)
+int genome_base::do_exchange1(operation * op)
 {
 	assert(op->type == EXCHANGE);
-	const exchange * opx = dynamic_cast<exchange *>(op);
+	const exchange1 * opx = dynamic_cast<exchange1 *>(op);
 
 	/*
 	printf("=================\n");
@@ -432,8 +432,8 @@ int genome_base::do_dcj(operation * op)
 			npos2 = PG(npos2.second, npos2.first);
 		}
 
-		operation * x = new exchange(npos1, npos2);
-		do_exchange(x);
+		operation * x = new exchange1(npos1, npos2);
+		do_exchange1(x);
 		delete x;
 	}
 	else

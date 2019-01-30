@@ -65,7 +65,7 @@ int adjacency::print() const
 	return 0;
 }
 
-int adjacency::exchange()
+int adjacency::exchange1()
 {
 	extremity e = e1;
 	e1 = e2;
@@ -147,7 +147,7 @@ int adjacency::sort_adjacencies(vector<adjacency> & s)
 
 			if(b1 == true && b2 == true) continue;
 
-			if(b1 == true) s.at(p).exchange();
+			if(b1 == true) s.at(p).exchange1();
 			break;
 		}
 
@@ -171,7 +171,7 @@ int adjacency::sort_adjacencies(vector<adjacency> & s)
 				if(s.at(p).e2.complement(s.at(i).e2))
 				{
 					p = i;
-					s.at(p).exchange();
+					s.at(p).exchange1();
 					found = true;
 					break;
 				}

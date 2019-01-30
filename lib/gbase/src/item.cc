@@ -705,8 +705,8 @@ int dup_item::reverse_operate(genome_base & gm) const
 	yy.e1.b = yy.e1.b ? false : true;
 	yy.e2.b = yy.e2.b ? false : true;
 
-	if(zz.direction() == false) zz.exchange();
-	if(yy.direction() == false) yy.exchange();
+	if(zz.direction() == false) zz.exchange1();
+	if(yy.direction() == false) yy.exchange1();
 
 	adjacency o(zz.e1, yy.e1);
 	o.e2.b = o.e2.b ? false : true;
@@ -714,7 +714,7 @@ int dup_item::reverse_operate(genome_base & gm) const
 	if(o != a1 && o != a2)
 	{
 		chrm::reverse(PG(yy.e1.g, yy.e2.g));
-		yy.exchange();
+		yy.exchange1();
 	}
 
 	yy.e1.g->a = NULL;
@@ -756,7 +756,7 @@ int dup_item::operate(genome_base & gm) const
 	assert(a2.available() == true);
 
 	adjacency zz = z;
-	if(zz.direction() == false) zz.exchange();
+	if(zz.direction() == false) zz.exchange1();
 
 	operation * op = new deletion(zz.e1.g->b, zz.e2.g->a, false);
 	gm.operate(op);
@@ -1078,8 +1078,8 @@ int dcj_item::reverse_operate(genome_base & gm) const
 	adjacency oo1 = o1;
 	adjacency oo2 = o2;
 
-	if(oo1.direction() == false) oo1.exchange();
-	if(oo2.direction() == false) oo2.exchange();
+	if(oo1.direction() == false) oo1.exchange1();
+	if(oo2.direction() == false) oo2.exchange1();
 
 	assert(oo1.direction() == true);
 	assert(oo2.direction() == true);
@@ -1122,8 +1122,8 @@ int dcj_item::operate(genome_base & gm) const
 	adjacency aa1 = a1;
 	adjacency aa2 = a2;
 
-	if(aa1.direction() == false) aa1.exchange();
-	if(aa2.direction() == false) aa2.exchange();
+	if(aa1.direction() == false) aa1.exchange1();
+	if(aa2.direction() == false) aa2.exchange1();
 
 	assert(aa1.direction() == true);
 	assert(aa2.direction() == true);

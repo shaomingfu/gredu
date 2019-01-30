@@ -29,7 +29,7 @@ public:
 
 	int print() const;
 	bool direction() const;
-	int exchange();
+	int exchange1();
 	int weak_compare(const adjacency & a) const;
 	int strong_compare(const adjacency & a) const;
 
